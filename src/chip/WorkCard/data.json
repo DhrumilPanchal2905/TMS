@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "img": "https://i.postimg.cc/bNwLYJyG/University-Finder-1.jpg",
+    "title": "University Finder",
+    "data_img": "https://i.postimg.cc/Z5r4ptLS/university-finder.png",
+    "desc": "Spearheaded the development of 'University Finder,' a comprehensive platform offering easy access to data on 100,000+ institutions, incorporating secure login/registration, session management, and robust password security. Integrated a high-performance API with IndexedDB for efficient data handling, ensuring fast, seamless university searches and maintaining peak site performance across an extensive dataset.",
+    "link": "https://find-university-dhrumil.vercel.app/",
+    "git": "https://github.com/DhrumilPanchal2905/Find_University.git"
+  },
+  {
+    "id": 2,
+    "img": "https://i.postimg.cc/sxyRtrJq/My-project.png",
+    "title": "Cosmos Graphics",
+    "data_img": "https://i.postimg.cc/T1CcHzwK/cosmos-graphic.png",
+    "desc": "Designed 'Cosmos Graphics,' an advanced 3D simulation using Three.js, accurately depicting the Earth, Sun, Moon, and Mars with realistic movements and rotations. This educational tool highlights my expertise in creating intricate, real-time 3D environments, emphasizing both scientific accuracy and user engagement. Applied rigorous optimization to ensure seamless performance and high visual fidelity across various devices.",
+    "link": "https://the-space-dhrumil.vercel.app/",
+    "git": "https://github.com/DhrumilPanchal2905/Earth_Model.git"
+  }
+]
