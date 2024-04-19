@@ -1,11 +1,11 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-export const metadata = {
-  title: "Portfolio | Dhrumil Panchal",
-  description:
-    "Explore Dhrumil Panchal's portfolio showcasing MERN stack projects and web development expertise.",
-};
+// export const metadata = {
+//   title: "Portfolio | Dhrumil Panchal",
+//   description:
+//     "Explore Dhrumil Panchal's portfolio showcasing MERN stack projects and web development expertise.",
+// };
 
 const FontJakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
