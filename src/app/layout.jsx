@@ -2,8 +2,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
 export const metadata = {
-  title: 'Worker Admin',
-  description: 'Worker Admin',
+  title: 'Portfolio | Dhrumil Panchal',
+  description: 'Dhrumil Panchal',
 };
 
 const FontJakarta = Plus_Jakarta_Sans({
