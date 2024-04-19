@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 import { metaInfo } from "@/constants/pageMetaInfo";
 import HomePage from "@/components/HomePage";
 
@@ -24,12 +24,10 @@ export const metadata = {
   },
 };
 
-export default async function Home() {
+export default function Home() {
   return (
-    apiRes?.length > 0 && (
-      <>
-        <HomePage />
-      </>
-    )
+    <>
+      <HomePage />
+    </>
   );
 }
