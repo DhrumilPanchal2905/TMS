@@ -2,7 +2,6 @@
 
 import { metaInfo } from "@/constants/pageMetaInfo";
 import HomePage from "@/components/HomePage";
-import useSetMetaInfo from "@/hooks/useSetMetaInfo";
 
 export const metadata = {
   title: metaInfo.home.title,
@@ -26,8 +25,12 @@ export const metadata = {
   },
 };
 
-export default function Home() {
-  const canonicalUrl = "https://dhrumilpanchal.in";
-  useSetMetaInfo(metaInfo.home.title, metaInfo.home.description, canonicalUrl);
-  return <HomePage />;
+export default async function Home() {
+  return (
+    apiRes?.length > 0 && (
+      <>
+        <HomePage />
+      </>
+    )
+  );
 }
