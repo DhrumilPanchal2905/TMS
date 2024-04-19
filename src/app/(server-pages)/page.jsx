@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { metaInfo } from "@/constants/pageMetaInfo";
 import HomePage from "@/components/HomePage";
 
-export const Metadata = {
+export const metadata = {
   title: metaInfo.home.title,
   description: metaInfo.home.description,
   alternates: { canonical: "https://dhrumilpanchal.in" },
