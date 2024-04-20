@@ -18,15 +18,18 @@
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
+
 html {
   overflow-x: hidden !important;
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
 }
+
 ::-webkit-scrollbar {
   width: 7px;
   scrollbar-color: white;
 }
+
 ::-webkit-scrollbar-thumb {
   background: black;
   border-radius: 10px;
@@ -38,19 +41,29 @@ html {
 }
 
 /* Hero circular spin */
-.circle-text{
+.circle-text {
   -webkit-animation: spin 12s linear infinite;
   animation: spin 12s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .image-container {
@@ -62,17 +75,18 @@ html {
 
 @keyframes rotate {
   0% {
-      transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
+
   100% {
-      transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
-  
+
 @media screen and (max-width: 768px) {
   .image-container {
-      height: 500px !important;
-      width: 500px !important;
+    height: 500px !important;
+    width: 500px !important;
   }
 }
 
@@ -98,4 +112,17 @@ html {
 
 .card-wrapper {
   scroll-behavior: smooth;
+}
+
+.downArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -6rem;
+}
+
+@media screen and (max-width: 600px) {
+  .downArrow {
+    top: -20rem;
+  }
 }

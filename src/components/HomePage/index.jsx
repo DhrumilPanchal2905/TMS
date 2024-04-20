@@ -23,11 +23,21 @@ const Home = () => {
 
   return (
     <>
-      <Hero darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Skills darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Work darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Resume darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Contact darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <div id="home">
+        <Hero darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+      <div id="skills">
+        <Skills darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+      <div id="works">
+        <Work darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+      <div id="resume">
+        <Resume darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+      <div id="contact">
+        <Contact darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
     </>
   );
 };

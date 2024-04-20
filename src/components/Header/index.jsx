@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "react-scroll";
 import { HiMenu } from "react-icons/hi";
-import { RxCross2 } from "react-icons/rx";
+// import { MdClose as AiOutlineClose } from "react-icons/md"; // Assuming you want a close icon
+import { AiOutlineClose } from "react-icons/ai";
 
 const navItems = [
   {
@@ -28,7 +29,7 @@ const navItems = [
   },
 ];
 
-const Header = ({ toggleDarkMode, darkMode }) => {
+export default function Header ({ toggleDarkMode, darkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -89,27 +90,31 @@ const Header = ({ toggleDarkMode, darkMode }) => {
               onClick={toggleNav}
               className={`text-3xl hidden md:block relative right-0 top-4 container mx-auto`}
             >
-              <RxCross2 size={25} />
+              <AiOutlineClose size={25} />
             </button>
             {navItems.map((item) => (
               <li
                 key={item.id}
                 className="md:m-6 md:flex md:gap-6 md:items-center md:justify-center"
               >
-                <a
-                  onClick={() => toggleNav(item.name)}
-                  href={`#${item.name}`}
-                  className={`uppercase cursor-pointer text-black hover:text-yellow-600 font-bold ${
-                    item.name === activeIndex ? "text-yellow-600" : ""
-                  }`}
+                <Link
+                  to={item.name} // This matches the id of the target section.
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  className="uppercase cursor-pointer text-black hover:text-yellow-600 font-bold"
+                  activeClass="text-yellow-600"
                 >
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
+
             <a
               href="https://www.linkedin.com/in/dhrumil-panchal-2240891b4/"
               target="_blank"
+              rel="noopener noreferrer" // Important for security when using target="_blank"
               className="bg-black text-[1rem] text-white px-8 py-2 rounded-lg font-bold hover:text-yellow-400 md:m-5 md:block md:mx-auto md:w-fit lg:px-3"
             >
               HIRE ME
@@ -120,5 +125,3 @@ const Header = ({ toggleDarkMode, darkMode }) => {
     </div>
   );
 };
-
-export default Header;

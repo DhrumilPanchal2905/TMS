@@ -1,30 +1,66 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import data from "./data.json";
 import { RxExternalLink } from "react-icons/rx";
 import { BiDetail } from "react-icons/bi";
 import Link from "next/link";
 import DetailModal from "@/chip/DetailModal";
+import axios from "axios";
+import { RingLoader } from "react-spinners";
 
 const WorkCard = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalContent, setModalContent] = useState({});
+  const [workData, setWorkData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `${process.env.NEXT_APP_BASE_URL}/api/workData`
+        );
+        setWorkData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const openModalWithContent = (data) => {
     setModalContent(data);
     setModalShow(true);
   };
 
-  // const reversedData = [...data].reverse();
+  const CenterLoader = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  if (loading) {
+
+    return (
+
+      <div className="w-full flex flex-col items-center justify-center">
+        <RingLoader color="#000" loading={loading} size={100} />
+        <p className="text-md mt-2">Fetching data...</p>
+      </div>
+    );
+  }
 
   return (
     <>
-      {data &&
-        Array.isArray(data) &&
-        data.map((item) => {
-          // const image = {item.img}
+      {workData &&
+        Array.isArray(workData) &&
+        workData.map((item) => {
           return (
             <>
               <div
@@ -44,9 +80,7 @@ const WorkCard = () => {
                   <div
                     className={` popup w-full  h-[280px] shadow-xl rounded-md overflow-hidden sm:h-[260px] sm:w-[100%] p-4 m-4`}
                   >
-                    {/* <p className=" text-gray-900 text-base leading-[1.4] text-justify w-[90%]">
-                    {data.desc}
-                  </p> */}
+                    {}
                     <div className=" flex items-center justify-center gap-4">
                       <Link
                         href={item.link}
