@@ -10,7 +10,7 @@ import {
 const Work = () => {
   const [showLeftScroll, setShowLeftScroll] = useState(false);
   const [showRightScroll, setShowRightScroll] = useState(true);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
 
   const cardWrapperRef = useRef(null);
   useEffect(() => {
