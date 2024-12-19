@@ -126,3 +126,204 @@ html {
     top: -20rem;
   }
 }
+
+/*  */
+.task-column {
+  width: 30%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin: 0 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.task-card {
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* NavBAr */
+.navbar {
+  background-color: #1e293b; /* Dark blue/gray color */
+  color: white;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f6c400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  color: #ffffff;
+}
+
+.highlight {
+  color: #f6c400; /* Gold/Yellow */
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.signout-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signout-button:hover {
+  background-color: #dc2626;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: #f6c400; /* Gold/Yellow */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #1e293b;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .signout-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+/* Dashboard */
+.admin-dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-form input, .task-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.task-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.board {
+  display: flex;
+  justify-content: space-around;
+}
+
+.board-column {
+  background: #f1f1f1;
+  width: 30%;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.task-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.delete-icon {
+  color: red;
+  cursor: pointer;
+  font-size: 20px;
+}

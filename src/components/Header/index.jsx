@@ -1,127 +1,63 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import React, { useEffect, useState } from "react";
-import { Link } from "react-scroll";
-import { HiMenu } from "react-icons/hi";
-// import { MdClose as AiOutlineClose } from "react-icons/md"; // Assuming you want a close icon
-import { AiOutlineClose } from "react-icons/ai";
+export default function Header() {
+  const [user, setUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
-const navItems = [
-  {
-    id: 0,
-    name: "home",
-  },
-  {
-    id: 1,
-    name: "skills",
-  },
-  {
-    id: 2,
-    name: "works",
-  },
-  {
-    id: 3,
-    name: "resume",
-  },
-  {
-    id: 4,
-    name: "contact",
-  },
-];
+  // ** Fetch user session on mount **
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return router.push("/");
 
-export default function Header ({ toggleDarkMode, darkMode }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
+    // Simulating user info fetch, you can modify it as per your needs
+    const fetchUser = async () => {
+      try {
+        const userData = JSON.parse(localStorage.getItem("user"));
+        setUser(userData?.email || "User");
+      } catch (error) {
+        console.error("Failed to load user info", error);
+      }
+    };
 
-  // Toggle the Header Section
-  const toggleNav = (name) => {
-    setIsOpen(!isOpen);
-    setActiveIndex(name === activeIndex ? null : name);
+    fetchUser();
+  }, [router]);
+
+  // ** Sign out logic **
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    router.push("/");
   };
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <div
-      className={`w-full mx-auto  fixed top-0 py-5 sm:py-4 z-30 ${
-        scrollPosition > 0 ? `bg-white shadow-md` : "bg-transparent"
-      } `}
-    >
-      <nav className=" container m-auto flex items-center justify-between">
-        <div data-aos="fade-down" className="logo">
-          <Link
-            onClick={() => window.scrollTo(0, 0)}
-            href={"/"}
-            className="text-3xl font-bold sm:text-3xl"
-          >
-            Dhrumil Panchal.
-          </Link>
-        </div>
-        <div
-          data-aos="fade-down"
-          className="nav-items flex items-center space-x-11"
-        >
-          {/* hamburger */}
-          <button
-            onClick={toggleNav}
-            className="cursor-pointer text-2xl hidden md:block"
-          >
-            <HiMenu size={25} />
-          </button>
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <h1 className="navbar-logo" onClick={() => router.push("/")}>
+          Task<span className="highlight">Tracker</span>
+        </h1>
 
-          <ul
-            className={`flex items-center space-x-11 ${
-              !isOpen ? "md:flex" : "md:right-[0%]"
-            } md:flex-col md:absolute m-auto md:top-0 md:right-[-100%] md:w-[78%] md:h-screen md:bg-white `}
-          >
-            {/* Use a button tag for better accessibility */}
-            <button
-              onClick={toggleNav}
-              className={`text-3xl hidden md:block relative right-0 top-4 container mx-auto`}
-            >
-              <AiOutlineClose size={25} />
+        {/* Mobile Menu Icon */}
+        <button className="menu-icon" onClick={toggleMenu}>
+          ☰
+        </button>
+
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <div className="user-info">
+            <span className="user-email">{user}</span>
+            <button className="signout-button" onClick={handleSignOut}>
+              Sign Out
             </button>
-            {navItems.map((item) => (
-              <li
-                key={item.id}
-                className="md:m-6 md:flex md:gap-6 md:items-center md:justify-center"
-              >
-                <Link
-                  to={item.name} // This matches the id of the target section.
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  className="uppercase cursor-pointer text-black hover:text-yellow-600 font-bold"
-                  activeClass="text-yellow-600"
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-
-            <a
-              href="https://www.linkedin.com/in/dhrumil-panchal-2240891b4/"
-              target="_blank"
-              rel="noopener noreferrer" // Important for security when using target="_blank"
-              className="bg-black text-[1rem] text-white px-8 py-2 rounded-lg font-bold hover:text-yellow-400 md:m-5 md:block md:mx-auto md:w-fit lg:px-3"
-            >
-              HIRE ME
-            </a>
-          </ul>
+          </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
-};
+}

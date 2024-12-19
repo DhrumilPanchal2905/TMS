@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import { Suspense } from "react";
+import { usePathname } from "next/navigation"; // Import usePathname
 import { BarLoader } from "react-spinners";
 
 export default function RootLayout({ children }) {
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname(); // Get the current path
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,10 +32,10 @@ export default function RootLayout({ children }) {
 
   return (
     <>
-      <Header />
+      {/* Show Header on all routes except "/" */}
+      {pathname !== "/" && <Header />}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
-

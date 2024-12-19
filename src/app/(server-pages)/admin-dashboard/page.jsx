@@ -1,5 +1,4 @@
-import { metaInfo } from "@/constants/pageMetaInfo";
-import Login from "@/components/LoginPage"
+import AdminDashboard from "@/components/Admin/Dashboard";
 
 export const metadata = {
   title: "Task Management",
@@ -7,15 +6,14 @@ export const metadata = {
   alternates: { canonical: "https://task.dhrumilpanchal.in" },
   openGraph: {
     url: `${process.env.NEXT_APP_BASE_URL}`,
-    title: metaInfo.home.title,
+    title: "Task Management",
     images: `${process.env.NEXT_APP_BASE_URL}/images/og-image.png`,
-    description: metaInfo.home.description,
+    description: "Task Management",
     type: "article",
   },
   twitter: {
-    title: "Task Management | Dhrumil Panchal",
-    description:
-      "",
+    title: "Task Management | Admin Side",
+    description: "",
     card: "summary_large_image",
   },
   robots: {
@@ -23,10 +21,6 @@ export const metadata = {
   },
 };
 
-export default function Home() {
-  return (
-    <>
-      <Login />
-    </>
-  );
+export default async function AdminDashboardPage() {
+  return <AdminDashboard />;
 }
